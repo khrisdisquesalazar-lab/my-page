@@ -3,46 +3,44 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ketoand Startpage v4.0</title>
+    <title>Ketoand Startpage v3.1 - Fixed Final</title>
     <style>
-        /* --- ESTILO DE LA PANTALLA DE CARGA (LANDING) --- */
+        /* --- ESTILO DE LA PANTALLA DE BIENVENIDA --- */
         #welcome-overlay {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background-color: #000;
+            /* Usamos la imagen completa como fondo */
+            background-image: url('https://i.imgur.com/UWytxH4.png');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-color: #000; /* Fondo base negro */
             display: flex;
-            flex-direction: column;
             justify-content: center;
             align-items: center;
             z-index: 1000;
-            transition: opacity 1.5s ease; /* Esto hace que se vuelva transparente poco a poco */
+            /* La animación de volverse transparente poco a poco */
+            transition: opacity 1.5s ease, visibility 1.5s ease;
             cursor: url('https://i.imgur.com/7CddGWN.png'), auto;
         }
 
-        .welcome-text {
-            font-family: 'Courier New', Courier, monospace;
-            color: white;
-            font-size: 2rem;
-            text-align: center;
-            margin: 20px;
-            text-transform: uppercase;
-            letter-spacing: 5px;
-        }
-
-        .tortuga-btn {
-            width: 350px;
+        /* El área "invisible" sobre la tortuga que activa la entrada */
+        #tortuga-click-area {
+            position: absolute;
+            width: 350px; /* Tamaño aproximado de la tortuga en la imagen */
+            height: 250px;
+            top: 50%; /* Centrado vertical */
+            left: 50%; /* Centrado horizontal */
+            transform: translate(-50%, -50%); /* Ajuste de centrado */
             cursor: url('https://i.imgur.com/7CddGWN.png'), pointer;
-            transition: transform 0.3s;
+            border-radius: 50%; /* Opcional: forma para que encaje mejor */
+            /* border: 2px solid red; Opcional: para ver el área durante la prueba */
         }
 
-        .tortuga-btn:hover {
-            transform: scale(1.1);
-        }
-
-        /* --- ESTILO GENERAL DE LA PÁGINA --- */
+        /* --- ESTILO GENERAL DE LA PÁGINA (Ketoand Site) --- */
         body {
             background-image: url('https://i.imgur.com/MkEjw6u.gif');
             background-size: cover;
@@ -77,7 +75,7 @@
         .top { top: 5px; left: 5%; right: 5%; height: 2px; }
         .bottom { bottom: 5px; left: 5%; right: 5%; height: 2px; }
         .left { left: 5px; top: 5%; bottom: 5%; width: 2px; }
-        .right { right: 5px; top: 5%; bottom: 5%; width: 2px; }
+        .right { right: 10px; top: 10%; bottom: 10%; width: 2px; }
 
         /* --- PANEL IZQUIERDO --- */
         .left-side {
@@ -218,19 +216,13 @@
         }
 
         @keyframes borderGlowSlow {
-            0% { border-color: #000; box-shadow: 0 0 10px #000; }
-            50% { border-color: #fff; box-shadow: 0 0 20px #fff; }
-            100% { border-color: #000; box-shadow: 0 0 10px #000; }
+            0% { border-color: #000; box-shadow: 0 0 10px #000, 0 0 2px 1px #000; }
+            50% { border-color: #fff; box-shadow: 0 0 20px #fff, 0 0 4px 2px #fff; }
+            100% { border-color: #000; box-shadow: 0 0 10px #000, 0 0 2px 1px #000; }
         }
     </style>
 </head>
 <body>
-
-    <div id="welcome-overlay">
-        <h1 class="welcome-text">Bienvenido pequeña criatura</h1>
-        <img src="https://i.imgur.com/qmSLTkk.png" class="tortuga-btn" onclick="revealSite()" alt="Cargar info">
-        <h2 class="welcome-text" style="font-size: 1.2rem;">Dale click a la tortuga para cargar la info de keto :P</h2>
-    </div>
 
     <div class="glow-line top"></div>
     <div class="glow-line bottom"></div>
@@ -241,6 +233,10 @@
         <source src="musica.mp3.mp3" type="audio/mpeg">
     </audio>
 
+    <div id="welcome-overlay">
+        <div id="tortuga-click-area" onclick="revealSite()"></div>
+    </div>
+
     <div class="left-side">
         <div class="friendly-image-box"></div>
         <div class="buttons-panel">
@@ -250,7 +246,7 @@
             <a href="https://steamcommunity.com/profiles/76561198790173153/" class="btn steam">STEAM</a>
             <a href="https://discord.gg/dRsakfqN" class="btn discord">DISCORD</a>
             <a href="https://t.me/Ketoand" class="btn telegram">TELEGRAM</a>
-            <a href="#" class="btn reddit">REDDIT</a>
+            <a href="TU_LINK_DE_REDDIT_AQUI" class="btn reddit">REDDIT</a>
             <a href="https://character.ai/profile/Chud_Critico" class="btn c-ai">CHARACTER.AI</a>
         </div>
         <div class="sad-mickey-box"></div>
@@ -262,13 +258,13 @@
             <div class="circular-gif"></div>
         </div>
         <div class="info-panel">
-            <h2>LA INFO DE MIERDA DE KETO</h2>
+            <h2>INFO_PERFIL :: KETO</h2>
             <hr>
             <div class="text-block">
-                Hola mi nombre es Christian de 14 años, Vivo en Venezuela estado Cumaná... (tu texto completo aquí)
+                Hola mi nombre es Christian de 14 años, Vivo en Venezuela estado Cumaná , me encanta jugar videojuegos, leer, escribir, dibujar, programar, editar algunos videos cuando me da la gana XD, la verdad no soy de esos que comparten fotos de su rostro asi no mas porque la verdad para conocerte tendria que llevarme muy bien de confianza, si quieres conocerme pues aqui estan algunas de mis redes.
             </div>
             <hr>
-            <p class="footer-text">Shitty Script By @Keto</p>
+            <p class="footer-text">ONLINE // v1.2</p>
             <div class="glow-image-box"></div>
         </div>
     </div>
@@ -278,13 +274,14 @@
             var overlay = document.getElementById("welcome-overlay");
             var audio = document.getElementById("bg-music");
             
-            // 1. Iniciar música
+            // 1. Iniciar música (el clic salta el bloqueo del navegador)
             audio.play().catch(function(error) {
                 console.log("Música activada.");
             });
 
-            // 2. Hacer el fondo transparente poco a poco
+            // 2. Hacer la pantalla de bienvenida transparente
             overlay.style.opacity = "0";
+            overlay.style.visibility = "hidden"; // Quitar visibilidad para que no bloquee clics
             
             // 3. Quitarlo del todo después de que termine la animación de 1.5s
             setTimeout(function() {
