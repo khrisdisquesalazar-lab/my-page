@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ketoand Startpage v2</title>
     <style>
+        /* --- ESTILO GENERAL --- */
         body {
             background-image: url('https://i.imgur.com/MkEjw6u.gif');
             background-size: cover;
@@ -28,7 +29,7 @@
             z-index: 0;
         }
 
-        /* LÍNEAS BRILLANTES */
+        /* LÍNEAS BRILLANTES (LAS QUE PEDISTE) */
         .glow-line {
             position: fixed;
             background: white;
@@ -40,7 +41,14 @@
         .left { left: 5px; top: 5%; bottom: 5%; width: 2px; }
         .right { right: 5px; top: 5%; bottom: 5%; width: 2px; }
 
-        .buttons-panel { position: relative; z-index: 1; text-align: center; width: 300px; margin-left: 80px; }
+        /* PANEL DE BOTONES */
+        .buttons-panel {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+            width: 300px;
+            margin-left: 80px;
+        }
 
         .btn {
             display: block;
@@ -48,25 +56,59 @@
             border: 2px solid #ffffff;
             color: white;
             padding: 12px;
-            margin: 10px 0;
+            margin: 8px 0;
             text-decoration: none;
             font-weight: bold;
             text-transform: uppercase;
             transition: 0.3s;
+            font-size: 0.9rem;
         }
 
-        /* COLORES DE REDES */
+        /* COLORES DE REDES AL PASAR EL MOUSE (HOVER) */
         .tiktok:hover { border-color: #ff0050; box-shadow: 0 0 20px #ff0050; color: #ff0050; }
         .roblox:hover { border-color: #00A2FF; box-shadow: 0 0 20px #00A2FF; color: #00A2FF; }
         .steam:hover { border-color: #66c0f4; box-shadow: 0 0 20px #66c0f4; color: #66c0f4; }
         .discord:hover { border-color: #5865F2; box-shadow: 0 0 20px #5865F2; color: #5865F2; }
         .telegram:hover { border-color: #0088cc; box-shadow: 0 0 20px #0088cc; color: #0088cc; }
         .reddit:hover { border-color: #FF4500; box-shadow: 0 0 20px #FF4500; color: #FF4500; }
+        .c-ai:hover { border-color: #a1a1a1; box-shadow: 0 0 20px #ffffff; color: #ffffff; }
 
-        .right-container { position: relative; z-index: 1; margin-right: 50px; display: flex; flex-direction: column; align-items: flex-end; }
-        .info-panel { background-color: rgba(0, 0, 0, 0.9); border: 2px solid #ffffff; padding: 35px; width: 480px; height: 75vh; box-shadow: 0 0 25px rgba(255, 255, 255, 0.3); overflow-y: auto; color: white; }
-        .circular-gif { width: 110px; height: 110px; border: 2px solid white; border-radius: 50%; margin-bottom: 20px; background-image: url('https://i.imgur.com/ddeOAqB.gif'); background-size: cover; box-shadow: 0 0 15px white; }
+        /* PANEL DE INFO */
+        .right-container {
+            position: relative;
+            z-index: 1;
+            margin-right: 50px;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+        }
+
+        .info-panel {
+            background-color: rgba(0, 0, 0, 0.9);
+            border: 2px solid #ffffff;
+            padding: 35px;
+            width: 480px;
+            height: 75vh;
+            box-shadow: 0 0 25px rgba(255, 255, 255, 0.3);
+            backdrop-filter: blur(10px);
+            overflow-y: auto;
+            color: white;
+        }
+
+        .circular-gif {
+            width: 110px;
+            height: 110px;
+            border: 2px solid white;
+            border-radius: 50%;
+            margin-bottom: 20px;
+            margin-right: 40px;
+            background-image: url('https://i.imgur.com/ddeOAqB.gif');
+            background-size: cover;
+            box-shadow: 0 0 15px white;
+        }
+
         .text-block { font-size: 0.95rem; line-height: 1.8; margin-bottom: 20px; }
+        hr { border: 0; border-top: 1px solid white; opacity: 0.5; margin: 20px 0; }
     </style>
 </head>
 <body>
@@ -87,40 +129,39 @@
         <a href="https://steamcommunity.com/profiles/76561198790173153/" class="btn steam">STEAM</a>
         <a href="https://discord.gg/dRsakfqN" class="btn discord">DISCORD</a>
         <a href="https://t.me/Ketoand" class="btn telegram">TELEGRAM</a>
-        <a href="#" class="btn reddit">REDDIT</a>
+        <a href="https://www.reddit.com/user/Obvious_Sherbet1019/" class="btn reddit">REDDIT</a>
+        <a href="https://character.ai/profile/Chud_Critico" class="btn c-ai">CHARACTER.AI</a>
     </div>
 
     <div class="right-container">
         <div class="circular-gif"></div>
         <div class="info-panel">
-            <h2 style="text-align:center;">INFO_PERFIL :: KETO</h2>
+            <h2 style="text-align:center; letter-spacing:4px;">INFO_PERFIL :: KETO</h2>
             <hr>
             <div class="text-block">
                 Hola mi nombre es Christian de 14 años, Vivo en Venezuela estado Cumaná , me encanta jugar videojuegos, leer, escribir, dibujar, programar, editar algunos videos cuando me da la gana XD, la verdad no soy de esos que comparten fotos de su rostro asi no mas porque la verdad para conocerte tendria que llevarme muy bien de confianza, si quieres conocerme pues aqui estan algunas de mis redes.
             </div>
             <hr>
-            <p style="text-align: center; opacity: 0.5;">ONLINE // v1.2</p>
+            <p style="text-align: center; opacity: 0.5; font-size: 0.7rem;">SISTEMA OPERATIVO v1.2 // ONLINE</p>
         </div>
     </div>
 
     <script>
         const audio = document.getElementById('bg-music');
         
-        // Función para intentar sonar
-        const activarAudio = () => {
+        // El audio sonará en cuanto el navegador detecte que estás ahí
+        const startAudio = () => {
             audio.play();
-            // Una vez que suena, quitamos los detectores para no gastar recursos
-            window.removeEventListener('mousemove', activarAudio);
-            window.removeEventListener('mousedown', activarAudio);
-            window.removeEventListener('keydown', activarAudio);
-            window.removeEventListener('touchstart', activarAudio);
+            // Quitamos los eventos para que no se reinicie
+            window.removeEventListener('mousemove', startAudio);
+            window.removeEventListener('touchstart', startAudio);
+            window.removeEventListener('click', startAudio);
         };
 
-        // Detectores de cualquier actividad
-        window.addEventListener('mousemove', activarAudio);
-        window.addEventListener('mousedown', activarAudio);
-        window.addEventListener('keydown', activarAudio);
-        window.addEventListener('touchstart', activarAudio);
+        window.addEventListener('mousemove', startAudio);
+        window.addEventListener('touchstart', startAudio);
+        window.addEventListener('click', startAudio);
     </script>
+
 </body>
 </html>
