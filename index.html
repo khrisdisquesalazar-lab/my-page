@@ -18,7 +18,7 @@
             height: 100vh;
             display: flex;
             align-items: center;
-            justify-content: space-between; /* Separa paneles a los extremos */
+            justify-content: space-between; /* Botones a un lado, Info al otro */
         }
 
         body::before {
@@ -35,7 +35,7 @@
             z-index: 1;
             text-align: center;
             width: 300px;
-            margin-left: 50px; /* Empuja los botones a la izquierda */
+            margin-left: 80px; /* Un poco más a la izquierda como pediste */
         }
 
         h1 {
@@ -70,42 +70,43 @@
             transform: scaleX(1.05);
         }
 
-        /* --- CUADRO DE INFO (DERECHA PEERFECTA) --- */
+        /* --- CONTENEDOR DERECHO (INFO + GIF) --- */
         .right-container {
             position: relative;
             z-index: 1;
-            margin-right: 0; /* Pegado al borde */
+            margin-right: 0; /* Pegado al borde derecho */
             display: flex;
             flex-direction: column;
-            align-items: flex-end; /* Alinea el círculo con el cuadro */
+            align-items: flex-end; /* Alinea el círculo y el cuadro a la derecha */
         }
 
+        /* --- CUADRO DE INFO CON BRILLO Y BLUR --- */
         .info-panel {
             background-color: #000;
             border: 2px solid #ffffff;
-            padding: 30px;
-            width: 450px;
+            padding: 40px 30px;
+            width: 480px; /* Un poquito más ancho para tu nuevo texto */
             height: 75vh;
             box-sizing: border-box;
-            /* EFECTO BRILLANTE CON BLUR */
-            box-shadow: 0 0 20px rgba(255, 255, 255, 0.4), inset 0 0 15px rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
+            /* Efecto brillante y blur solicitado */
+            box-shadow: 0 0 25px rgba(255, 255, 255, 0.5), inset 0 0 15px rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(12px);
             display: flex;
             flex-direction: column;
             overflow-y: auto;
         }
 
-        /* --- EL CÍRCULO GIF (ENCIMA DEL CUADRO) --- */
+        /* --- EL CÍRCULO GIF (ARRIBA DEL CUADRO) --- */
         .circular-gif-outer {
-            width: 100px;
-            height: 100px;
+            width: 110px;
+            height: 110px;
             background-color: #000;
             border: 2px solid #ffffff;
             border-radius: 50%;
             overflow: hidden;
             box-shadow: 0 0 20px white;
-            margin-bottom: 15px; /* Espacio antes del cuadro */
-            margin-right: 20px; /* Ajuste visual para que no esté tan en la esquina */
+            margin-bottom: 20px; /* Espacio antes del cuadro */
+            margin-right: 40px; /* Alineación visual */
         }
 
         .circular-gif-outer img {
@@ -114,74 +115,8 @@
             object-fit: cover;
         }
 
-        /* --- TEXTO BLANCO Y LIMPIO --- */
+        /* --- TEXTO BLANCO Y SEPARADO --- */
         .text-block {
-            font-size: 0.95rem;
-            line-height: 1.6;
-            color: #ffffff; /* FORZADO A BLANCO */
-            margin-bottom: 20px;
-            padding: 10px;
-            transition: 0.3s;
-            text-shadow: 0 0 5px rgba(255, 255, 255, 0.3);
-        }
-
-        .text-block:hover {
-            background: rgba(255, 255, 255, 0.1);
-            text-shadow: 0 0 10px white;
-        }
-
-        .info-panel h2 {
-            color: white;
-            text-align: center;
-            letter-spacing: 3px;
-            text-shadow: 0 0 10px white;
-        }
-
-        .separator {
-            border-bottom: 1px solid white;
-            margin: 15px 0;
-            opacity: 0.5;
-            box-shadow: 0 0 10px white;
-        }
-
-        @keyframes float {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-8px); }
-        }
-
-        .telegram-user {
-            position: absolute;
-            bottom: 10px;
-            left: 50%;
-            transform: translateX(-50%);
-            color: white;
-            opacity: 0.6;
-            font-size: 0.8rem;
-        }
-    </style>
-</head>
-<body>
-
-    <div class="buttons-panel">
-        <h1>KETO ALL ACCOUNTS</h1>
-        <a href="https://www.tiktok.com/@shakalaketo" class="btn">TIKTOK</a>
-        <a href="https://www.roblox.com/es/users/4693048699/profile" class="btn">ROBLOX</a>
-        <a href="https://steamcommunity.com/profiles/76561198790173153/" class="btn">STEAM</a>
-        <a href="https://discord.gg/dRsakfqN" class="btn">DISCORD</a>
-        <a href="https://t.me/Ketoand" class="btn">TELEGRAM</a>
-    </div>
-
-    <div class="right-container">
-        <div class="circular-gif-outer">
-            <img src="https://i.imgur.com/ddeOAqB.gif" alt="gif">
-        </div>
-
-        <div class="info-panel">
-            <h2>INFO_PERFIL :: KETO</h2>
-            <div class="separator"></div>
-
-            <div class="text-block">
-                Hola, soy Christian de Venezuela Cumaná. Me considero una persona amigable y un poco negativa a veces pero soy de esos que les encanta conocer gente.
-            </div>
-            
-            <div class="text
+            font-size: 1rem;
+            line-height: 1.8;
+            color: #ffffff; /* Texto blanco
