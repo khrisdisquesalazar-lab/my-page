@@ -3,8 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Keto Startpage v2</title>
+    <title>Ketoand Startpage</title>
     <style>
+        /* --- ESTILO GENERAL --- */
         body {
             background-image: url('https://i.imgur.com/MkEjw6u.gif');
             background-size: cover;
@@ -18,7 +19,7 @@
             display: flex;
             align-items: center;
             justify-content: space-between;
-            cursor: pointer;
+            color: white;
         }
 
         body::before {
@@ -29,54 +30,112 @@
             z-index: 0;
         }
 
-        .buttons-panel { position: relative; z-index: 1; text-align: center; width: 300px; margin-left: 80px; }
-        .btn { display: block; background: rgba(0, 0, 0, 0.7); border: 2px solid #ffffff; color: white; padding: 15px; margin: 15px 0; text-decoration: none; font-weight: bold; text-transform: uppercase; transition: 0.3s; backdrop-filter: blur(5px); box-shadow: 0 0 10px rgba(255, 255, 255, 0.2); animation: float 3s ease-in-out infinite; }
-        
-        .right-container { position: relative; z-index: 1; display: flex; flex-direction: column; align-items: flex-end; }
-        .info-panel { background-color: #000; border: 2px solid #ffffff; padding: 40px 30px; width: 480px; height: 75vh; box-sizing: border-box; box-shadow: 0 0 25px rgba(255, 255, 255, 0.5), inset 0 0 15px rgba(255, 255, 255, 0.1); backdrop-filter: blur(12px); display: flex; flex-direction: column; overflow-y: auto; color: white; }
-        .circular-gif-outer { width: 110px; height: 110px; border: 2px solid #ffffff; border-radius: 50%; overflow: hidden; box-shadow: 0 0 20px white; margin-bottom: 20px; margin-right: 40px; }
-        .text-block { font-size: 1rem; line-height: 1.8; margin-bottom: 25px; text-shadow: 0 0 8px rgba(255, 255, 255, 0.4); }
-        
-        @keyframes float { 0%, 100% { transform: translateY(0px); } 50% { transform: translateY(-8px); } }
+        /* --- PANEL DE BOTONES --- */
+        .buttons-panel {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+            width: 300px;
+            margin-left: 80px;
+        }
+
+        .btn {
+            display: block;
+            background: rgba(0, 0, 0, 0.7);
+            border: 2px solid #ffffff;
+            color: white;
+            padding: 12px;
+            margin: 10px 0;
+            text-decoration: none;
+            font-weight: bold;
+            text-transform: uppercase;
+            transition: 0.3s;
+            backdrop-filter: blur(5px);
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+        }
+
+        .btn:hover {
+            background: white;
+            color: black;
+            box-shadow: 0 0 20px white;
+        }
+
+        /* --- PANEL DE INFO --- */
+        .right-container {
+            position: relative;
+            z-index: 1;
+            margin-right: 40px;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+        }
+
+        .info-panel {
+            background-color: #000;
+            border: 2px solid #ffffff;
+            padding: 30px;
+            width: 450px;
+            height: 70vh;
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+            overflow-y: auto;
+        }
+
+        .circular-gif {
+            width: 100px;
+            height: 100px;
+            border: 2px solid white;
+            border-radius: 50%;
+            margin-bottom: 15px;
+            background-image: url('https://i.imgur.com/ddeOAqB.gif');
+            background-size: cover;
+        }
     </style>
 </head>
-<body onclick="playMusic()">
+<body>
 
-    <audio id="bg-music" loop>
-        <source src="musica.mp3" type="audio/mpeg">
+    <audio id="bg-music" autoplay loop>
+        <source src="musica.mp3.mp3" type="audio/mpeg">
     </audio>
 
     <div class="buttons-panel">
-        <h1 style="color:white; font-size:1rem; letter-spacing:5px;">KETO ALL ACCOUNTS</h1>
+        <h1 style="font-size: 1.2rem; letter-spacing: 3px;">KETO ALL ACCOUNTS</h1>
         <a href="https://www.tiktok.com/@shakalaketo" class="btn">TIKTOK</a>
         <a href="https://www.roblox.com/es/users/4693048699/profile" class="btn">ROBLOX</a>
         <a href="https://steamcommunity.com/profiles/76561198790173153/" class="btn">STEAM</a>
         <a href="https://discord.gg/dRsakfqN" class="btn">DISCORD</a>
         <a href="https://t.me/Ketoand" class="btn">TELEGRAM</a>
+        <a href="https://www.reddit.com/user/Obvious_Sherbet1019/" class="btn" style="border-color: #FF4500;">REDDIT</a>
     </div>
 
     <div class="right-container">
-        <div class="circular-gif-outer">
-            <img src="https://i.imgur.com/ddeOAqB.gif" alt="gif" style="width:100%; height:100%; object-fit:cover;">
-        </div>
+        <div class="circular-gif"></div>
         <div class="info-panel">
-            <h2 style="text-align:center; letter-spacing:4px;">INFO_PERFIL :: KETO</h2>
-            <hr style="border:1px solid white; opacity:0.6; margin-bottom:25px;">
-            <div class="text-block">Hola mi nombre es Christian de 14 años, Vivo en Venezuela estado Cumaná , me encanta jugar videojuegos, leer, escribir, dibujar, programar, editar algunos videos cuando me da la gana XD.</div>
-            <div class="text-block">La verdad no soy de esos que comparten fotos de su rostro asi no mas porque la verdad para conocerte tendria que llevarme muy bien de confianza.</div>
-            <div class="text-block">Si quieres conocerme pues aqui estan algunas de mis redes.</div>
+            <h2>INFO_PERFIL :: KETO</h2>
+            <hr>
+            <p>> Hola, soy Christian de Venezuela Cumaná de 14 años de edad.</p>
+            <p>> Me encanta dibujar leer  escribir programar pasar tiempo con amigos  y etc :P </p>
+            <p>> La verdad soy de esos que le gustan la musica de todo tipo si quieres hablar de eso cuenta conmigo.</p>
+            <br>
+            <p>KETO ESTUVO AQUIv1.2 // ONLINE</p>
         </div>
     </div>
 
     <script>
-        function playMusic() {
-            var audio = document.getElementById("bg-music");
-            audio.play().catch(function(error) {
-                console.log("Error al reproducir: ", error);
+        // Intento de sonar solo al entrar
+        window.addEventListener('load', () => {
+            const audio = document.getElementById('bg-music');
+            audio.volume = 0.5;
+            audio.play().catch(() => {
+                console.log("Esperando interacción para sonar...");
             });
-            // Elimina el click para que no se reinicie la canción
-            document.body.onclick = null;
-        }
+        });
+
+        // Si Chrome bloquea el audio, sonará al mover el mouse o hacer clic
+        document.body.addEventListener('mouseover', () => {
+            const audio = document.getElementById('bg-music');
+            if (audio.paused) { audio.play(); }
+        }, { once: true });
     </script>
+
 </body>
 </html>
