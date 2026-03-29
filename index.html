@@ -18,7 +18,8 @@
             height: 100vh;
             display: flex;
             align-items: center;
-            justify-content: space-between; /* Botones a un lado, Info al otro */
+            justify-content: space-between;
+            cursor: pointer; /* Indica que puedes hacer clic para la música */
         }
 
         body::before {
@@ -29,13 +30,13 @@
             z-index: 0;
         }
 
-        /* --- CONTENEDOR DE BOTONES (IZQUIERDA) --- */
+        /* --- CONTENEDOR DE BOTONES --- */
         .buttons-panel {
             position: relative;
             z-index: 1;
             text-align: center;
             width: 300px;
-            margin-left: 80px; /* Un poco más a la izquierda como pediste */
+            margin-left: 80px;
         }
 
         h1 {
@@ -70,25 +71,23 @@
             transform: scaleX(1.05);
         }
 
-        /* --- CONTENEDOR DERECHO (INFO + GIF) --- */
+        /* --- CONTENEDOR DERECHO --- */
         .right-container {
             position: relative;
             z-index: 1;
-            margin-right: 0; /* Pegado al borde derecho */
+            margin-right: 0;
             display: flex;
             flex-direction: column;
-            align-items: flex-end; /* Alinea el círculo y el cuadro a la derecha */
+            align-items: flex-end;
         }
 
-        /* --- CUADRO DE INFO CON BRILLO Y BLUR --- */
         .info-panel {
             background-color: #000;
             border: 2px solid #ffffff;
             padding: 40px 30px;
-            width: 480px; /* Un poquito más ancho para tu nuevo texto */
+            width: 480px;
             height: 75vh;
             box-sizing: border-box;
-            /* Efecto brillante y blur solicitado */
             box-shadow: 0 0 25px rgba(255, 255, 255, 0.5), inset 0 0 15px rgba(255, 255, 255, 0.1);
             backdrop-filter: blur(12px);
             display: flex;
@@ -96,7 +95,6 @@
             overflow-y: auto;
         }
 
-        /* --- EL CÍRCULO GIF (ARRIBA DEL CUADRO) --- */
         .circular-gif-outer {
             width: 110px;
             height: 110px;
@@ -105,8 +103,8 @@
             border-radius: 50%;
             overflow: hidden;
             box-shadow: 0 0 20px white;
-            margin-bottom: 20px; /* Espacio antes del cuadro */
-            margin-right: 40px; /* Alineación visual */
+            margin-bottom: 20px;
+            margin-right: 40px;
         }
 
         .circular-gif-outer img {
@@ -115,13 +113,12 @@
             object-fit: cover;
         }
 
-        /* --- TEXTO BLANCO Y SEPARADO --- */
         .text-block {
             font-size: 1rem;
             line-height: 1.8;
-            color: #ffffff; /* Texto blanco puro */
+            color: #ffffff;
             margin-bottom: 25px;
-            text-shadow: 0 0 8px rgba(255, 255, 255, 0.4); /* Brillo sutil en las letras */
+            text-shadow: 0 0 8px rgba(255, 255, 255, 0.4);
         }
 
         .info-panel h2 {
@@ -154,9 +151,16 @@
             font-size: 0.8rem;
             letter-spacing: 2px;
         }
+
+        /* --- REPRODUCTOR OCULTO --- */
+        #bg-music { display: none; }
     </style>
 </head>
-<body>
+<body onclick="playMusic()">
+
+    <audio id="bg-music" loop>
+        <source src="https://files.catbox.moe/oxtv2x.mp3" type="audio/mpeg">
+    </audio>
 
     <div class="buttons-panel">
         <h1>KETO ALL ACCOUNTS</h1>
@@ -194,6 +198,14 @@
     </div>
 
     <p class="telegram-user">@Ketoand</p>
+
+    <script>
+        function playMusic() {
+            var audio = document.getElementById("bg-music");
+            audio.volume = 0.5; // Ajusta el volumen aquí (0.1 a 1.0)
+            audio.play();
+        }
+    </script>
 
 </body>
 </html>
