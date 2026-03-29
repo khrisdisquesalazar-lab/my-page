@@ -3,8 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Keto All Accounts</title>
+    <title>SISTEMA OPERATIVO KETO</title>
     <style>
+        /* --- ESTILO GENERAL --- */
         body {
             /* FONDO DEL GATO */
             background-image: url('https://i.imgur.com/MkEjw6u.gif');
@@ -12,63 +13,70 @@
             background-position: center;
             background-attachment: fixed;
             background-color: #000;
-            
-            /* CENTRADO PERFECTO */
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
             margin: 0;
             font-family: 'Courier New', Courier, monospace;
             overflow: hidden;
+            height: 100vh;
+            color: white;
         }
 
-        /* CAPA OSCURA PARA QUE SE LEAN LOS BOTONES */
+        /* Capa oscura general para contraste */
         body::before {
             content: "";
             position: absolute;
             top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0, 0, 0, 0.4); /* Oscurece el gif un poco */
+            background: rgba(0, 0, 0, 0.4);
             z-index: 0;
         }
 
-        .container {
+        /* Contenedor Principal: Divide la pantalla en dos columnas */
+        .main-wrapper {
             position: relative;
             z-index: 1;
-            text-align: center;
-            width: 90%;
-            max-width: 400px;
+            display: grid;
+            grid-template-columns: 1fr 1fr; /* Mitad para botones, mitad para info */
+            gap: 20px;
+            padding: 40px;
+            height: 100vh;
+            align-items: center; /* Centrado vertical */
         }
 
-        h1 {
-            color: white;
+        /* --- COLUMNA 1: PANEL DE BOTONES (IZQUIERDA) --- */
+        .buttons-panel {
+            text-align: left; /* Alineado a la izquierda como pediste */
+            max-width: 300px; /* Ancho para botones */
+            justify-self: center; /* Centra el bloque entero a la izquierda */
+        }
+
+        .buttons-panel h1 {
             font-size: 1.2rem;
             letter-spacing: 5px;
             text-transform: uppercase;
             margin-bottom: 30px;
-            text-shadow: 2px 2px 10px rgba(0,0,0,0.5);
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+            margin-left: 10px;
         }
 
-        /* ESTILO "DROPPED ITEM" (Flotante y transparente) */
+        /* Botones Transparentes Flotantes */
         .btn {
             display: block;
-            background: rgba(0, 0, 0, 0.5); /* Botón oscuro transparente */
+            background: rgba(0, 0, 0, 0.5); /* Oscuro transparente */
             border: 2px solid #ffffff;
             color: white;
             padding: 15px;
-            margin: 20px 0; /* Más espacio entre botones */
+            margin: 20px 0; /* Espacio entre botones */
             text-decoration: none;
             font-weight: bold;
             text-transform: uppercase;
-            transition: 0.3s;
+            transition: 0.3s ease-in-out;
             backdrop-filter: blur(5px);
-            box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
+            box-shadow: 0 0 15px rgba(255, 255, 255, 0.2), inset 0 0 5px rgba(255, 255, 255, 0.1);
             
             /* Animación de flotar */
             animation: float 3s ease-in-out infinite;
         }
 
-        /* Esto hace que no suban todos al mismo tiempo */
+        /* Retrasos de flotación */
         .btn:nth-child(2) { animation-delay: 0.2s; }
         .btn:nth-child(3) { animation-delay: 0.4s; }
         .btn:nth-child(4) { animation-delay: 0.6s; }
@@ -78,38 +86,127 @@
         .btn:hover {
             background: white;
             color: black;
-            transform: scaleX(1.1);
+            transform: scaleX(1.1); /* Efecto stretched */
             box-shadow: 0 0 30px rgba(255, 255, 255, 0.8);
         }
 
-        /* LÓGICA DE FLOTACIÓN */
-        @keyframes float {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-15px); } /* Sube un poco más */
+        /* --- COLUMNA 2: PANEL DE INFO (DERECHA - Tu cuadro rayado) --- */
+        .info-panel {
+            background-color: #000; /* Fondo Negro Sólido */
+            border: 2px solid #ffffff; /* Borde Blanco */
+            padding: 30px;
+            height: 70vh; /* Alto del panel */
+            max-width: 450px;
+            margin-right: 40px; /* Margen para no estar pegado al borde */
+            box-sizing: border-box;
+            box-shadow: 0 0 25px rgba(255, 255, 255, 0.6); /* BORDES ILUMINADOS */
+            
+            display: flex;
+            flex-direction: column;
+            align-items: start;
+            justify-content: start;
+            overflow-y: auto; /* Barra de scroll si el texto es muy largo */
         }
 
-        .telegram-user {
-            margin-top: 30px;
-            color: rgba(255, 255, 255, 0.8);
+        /* Texto dentro del panel */
+        .info-panel h2 {
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: #fff;
+            margin-top: 0;
+            margin-bottom: 20px;
+            text-shadow: 0 0 10px #fff;
+        }
+
+        .info-panel p {
             font-size: 0.9rem;
+            line-height: 1.6;
+            color: rgba(255, 255, 255, 0.9);
+            margin: 10px 0;
+        }
+
+        /* --- CIRCULITO GIF (ARRIBA DERECHA) --- */
+        .circular-gif {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            width: 80px; /* Tamaño del circulito */
+            height: 80px;
+            border-radius: 50%; /* Lo hace circular */
+            border: 2px solid #ffffff;
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.7);
+            
+            /* IMAGEN DEL GIF CIRCULAR */
+            /* Pon aquí tu GIF circular */
+            background-image: url('PON_AQUI_TU_GIF_CIRCULAR.gif');
+            
+            background-size: cover;
+            background-position: center;
+            z-index: 10;
+            animation: pulseGlow 4s ease-in-out infinite;
+        }
+
+        /* --- ANIMACIONES --- */
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-15px); }
+        }
+
+        @keyframes pulseGlow {
+            0%, 100% { box-shadow: 0 0 15px rgba(255, 255, 255, 0.6); }
+            50% { box-shadow: 0 0 30px rgba(255, 255, 255, 1); }
+        }
+
+        /* --- FOOTER USUARIO --- */
+        .telegram-user {
+            position: absolute;
+            bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 5;
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 0.8rem;
             letter-spacing: 2px;
-            text-shadow: 2px 2px 5px black;
         }
     </style>
 </head>
 <body>
 
-    <div class="container">
-        <h1>KETO ALL ACCOUNTS</h1>
-        
-        <a href="https://www.tiktok.com/@shakalaketo" class="btn">TIKTOK</a>
-        <a href="#" class="btn">ROBLOX</a>
-        <a href="https://steamcommunity.com/profiles/76561198790173153/" class="btn">STEAM</a>
-        <a href="#" class="btn">DISCORD</a>
-        <a href="https://t.me/Ketoand" class="btn">TELEGRAM</a>
+    <div class="circular-gif"></div>
 
-        <p class="telegram-user">@Ketoand</p>
+    <div class="main-wrapper">
+        
+        <div class="buttons-panel">
+            <h1>KETO ALL ACCOUNTS :P</h1></h1>
+            
+            <a href="https://www.tiktok.com/@shakalaketo" class="btn">TIKTOK</a>
+            <a href="#" class="btn">ROBLOX</a>
+            <a href="https://steamcommunity.com/profiles/76561198790173153/" class="btn">STEAM</a>
+            <a href="#" class="btn">DISCORD</a>
+            <a href="https://t.me/Ketoand" class="btn">TELEGRAM</a>
+        </div>
+
+        <div class="info-panel">
+            <h2>INFO_SISTEMA :: KETO</h2>
+            <p>> INICIANDO SESIÓN...</p>
+            <p>> USUARIO: Ketoand</p>
+            <p>> ESTADO: ONLINE</p>
+            <p>___________________</p>
+            <p>BIENVENIDO A MI STARTPAGE.</p>
+            <p>> SOBRE MÍ:</p>
+            <p>Hola chicos mi nombre es Christian soy  de Venezuela  Estado Cumaná y la verdad soy de esas personas que les encanta  editar pasar tiempo jugando  con sus 
+            amigos en la plaza, jeje cosas  asi, si alguna vez  quieres hablar conmigo  de  algun tema pues cuenta conmigo
+            soy muy amigable y me encanta jugar videojuegos con mis amigos, mi pasatiempo es escribir, leer historias romanas o de WW2, programar, charlar con amigos, etc
+            BUENO ADIOS :PPP </p>
+            <p>Esta página está optimizada para la resolución de tu pantalla.</p>
+            <p>___________________</p>
+            <p>> FIN DE ARCHIVO.</p>
+        </div>
+
     </div>
+
+    <p class="telegram-user">@Ketoand</p>
 
 </body>
 </html>
