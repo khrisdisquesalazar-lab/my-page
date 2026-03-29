@@ -3,10 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Keto System OS</title>
+    <title>Keto Startpage v2</title>
     <style>
+        /* --- ESTILO GENERAL (Limpieza y Fondo) --- */
         body {
-            /* EL GATO DE FONDO */
+            /* FONDO DEL GATO (Link directo Imgur) */
             background-image: url('https://i.imgur.com/MkEjw6u.gif');
             background-size: cover;
             background-position: center;
@@ -17,134 +18,211 @@
             overflow: hidden;
             height: 100vh;
             display: flex;
-            justify-content: center;
-            align-items: center;
+            align-items: center; /* Centrado vertical de la página */
+            justify-content: flex-end; /* TODO Pegado a la DERECHA */
+            padding-right: 50px; /* Margen para que el cuadro no esté *tan* pegado */
         }
 
-        /* Capa oscura para que resalte todo */
+        /* Capa oscura general para contraste (menos agresiva) */
         body::before {
             content: "";
             position: absolute;
             top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0, 0, 0, 0.5);
+            background: rgba(0, 0, 0, 0.4);
             z-index: 0;
         }
 
-        /* CONTENEDOR DE DOS COLUMNAS */
-        .main-wrapper {
+        /* --- CONTENEDOR PRINCIPAL --- */
+        .wrapper {
             position: relative;
             z-index: 1;
             display: flex;
-            width: 90%;
-            max-width: 1000px;
-            gap: 50px;
             align-items: center;
+            gap: 40px; /* Espacio entre botones y info */
         }
 
-        /* COLUMNA IZQUIERDA: BOTONES */
+        /* --- BOTONES (Alineados a la izquierda del wrapper) --- */
         .buttons-panel {
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
+            text-align: center;
+            width: 300px; /* Ancho fijo para los botones */
         }
 
+        h1 {
+            font-size: 1rem;
+            letter-spacing: 5px;
+            text-transform: uppercase;
+            margin-bottom: 30px;
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+            margin-left: -50px; /* Corrección de alineación del título */
+        }
+
+        /* Botones Minimalistas Flotantes */
         .btn {
             display: block;
-            background: rgba(255, 255, 255, 0.05);
+            background: rgba(0, 0, 0, 0.6); /* Transparente oscuro */
             border: 2px solid #ffffff;
             color: white;
             padding: 15px;
+            margin: 20px 0; /* Espacio entre botones */
             text-decoration: none;
             font-weight: bold;
             text-transform: uppercase;
-            text-align: center;
-            transition: 0.3s;
+            transition: 0.3s ease-in-out;
             backdrop-filter: blur(5px);
-            box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+            box-shadow: 0 0 15px rgba(255, 255, 255, 0.1);
+            
+            /* Animación de flotar */
             animation: float 3s ease-in-out infinite;
         }
+
+        /* Tiempos de animación diferentes */
+        .btn:nth-child(2) { animation-delay: 0.2s; }
+        .btn:nth-child(3) { animation-delay: 0.4s; }
+        .btn:nth-child(4) { animation-delay: 0.6s; }
+        .btn:nth-child(5) { animation-delay: 0.8s; }
+        .btn:nth-child(6) { animation-delay: 1s; }
 
         .btn:hover {
             background: white;
             color: black;
-            box-shadow: 0 0 25px white;
-            transform: scale(1.05);
+            transform: scaleX(1.1); /* Efecto stretched */
+            box-shadow: 0 0 30px rgba(255, 255, 255, 0.8);
         }
 
-        /* COLUMNA DERECHA: TU CUADRO NEGRO */
+        /* --- CUADRO GRANDE DE INFO (Pegado a la Derecha) --- */
         .info-panel {
-            flex: 1.2;
-            background: #000;
-            border: 3px solid #fff;
+            background-color: #000; /* Fondo Negro Sólido */
+            border: 2px solid #ffffff; /* Borde Blanco */
             padding: 30px;
-            height: 450px;
-            position: relative;
-            box-shadow: 0 0 30px rgba(255, 255, 255, 0.6); /* BORDES ILUMINADOS */
-            color: white;
-            overflow-y: auto;
+            width: 450px; /* Ancho fijo */
+            height: 70vh; /* Alto fijo */
+            box-sizing: border-box;
+            box-shadow: 0 0 25px rgba(255, 255, 255, 0.5); /* Bordes Iluminados */
+            
+            display: flex;
+            flex-direction: column;
+            overflow-y: auto; /* Barra de scroll si el texto es muy largo */
         }
 
-        /* EL CIRCULITO PARA TU GIF */
-        .circular-gif {
+        /* --- EL CÍRCULO GIF (FUERA Y ARRIBA) --- */
+        .circular-gif-outer {
             position: absolute;
-            top: -40px; /* Sale un poco del cuadro */
-            right: -20px;
+            top: 20px;
+            right: -20px; /* Sale hacia la derecha del cuadro */
             width: 100px;
             height: 100px;
             background-color: #000;
-            border: 3px solid #fff;
-            border-radius: 50%;
+            border: 2px solid #ffffff;
+            border-radius: 50%; /* Circular */
             overflow: hidden;
-            box-shadow: 0 0 20px white;
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.8);
             z-index: 2;
         }
 
-        .circular-gif img {
+        .circular-gif-outer img {
             width: 100%;
             height: 100%;
             object-fit: cover;
         }
 
-        /* ANIMACIONES */
+        /* --- ESTILO DE TEXTO LIMPIO Y SEPARADO --- */
+        .info-panel h2 {
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: #fff;
+            margin-top: 0;
+            margin-bottom: 15px;
+            text-shadow: 0 0 10px #fff;
+            text-align: center;
+        }
+
+        .separator {
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+            margin: 15px 0;
+            width: 80%;
+            align-self: center;
+        }
+
+        /* Bloques de texto separados */
+        .text-block {
+            font-size: 0.9rem;
+            line-height: 1.6;
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 15px; /* Espacio entre párrafos */
+            padding: 10px;
+            border-left: 2px solid transparent; /* Efecto limpio al hover */
+            transition: 0.2s;
+        }
+
+        .text-block:hover {
+            background-color: rgba(255, 255, 255, 0.05);
+            border-left: 2px solid white;
+        }
+
+        /* --- ANIMACIONES --- */
         @keyframes float {
             0%, 100% { transform: translateY(0px); }
             50% { transform: translateY(-10px); }
         }
 
-        h1 { font-size: 1.2rem; letter-spacing: 3px; margin-bottom: 20px; }
-        p { line-height: 1.6; font-size: 0.9rem; }
+        /* Footer de Usuario */
+        .telegram-user {
+            position: absolute;
+            bottom: 15px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 5;
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 0.8rem;
+            letter-spacing: 2px;
+        }
     </style>
 </head>
 <body>
 
-    <div class="main-wrapper">
+    <div class="circular-gif-outer">
+        <img src="https://i.imgur.com/MkEjw6u.gif" alt="gif">
+    </div>
+
+    <div class="wrapper">
         
         <div class="buttons-panel">
-            <h1 style="text-align: center;">SISTEMA OPERATIVO</h1>
+            <h1>SISTEMA OPERATIVO</h1>
             <a href="https://www.tiktok.com/@shakalaketo" class="btn">TIKTOK</a>
-            <a href="#" class="btn" style="animation-delay: 0.2s;">ROBLOX</a>
-            <a href="https://steamcommunity.com/profiles/76561198790173153/" class="btn" style="animation-delay: 0.4s;">STEAM</a>
-            <a href="#" class="btn" style="animation-delay: 0.6s;">DISCORD</a>
-            <a href="https://t.me/Ketoand" class="btn" style="animation-delay: 0.8s;">TELEGRAM</a>
+            <a href="#" class="btn">ROBLOX</a>
+            <a href="https://steamcommunity.com/profiles/76561198790173153/" class="btn">STEAM</a>
+            <a href="#" class="btn">DISCORD</a>
+            <a href="https://t.me/Ketoand" class="btn">TELEGRAM</a>
         </div>
 
         <div class="info-panel">
-            <div class="circular-gif">
-                <img src="https://i.imgur.com/ddeOAqB.gif" alt="gif">
+            <h2>INFO_PERFIL :: KETO</h2>
+            <div class="separator"></div>
+
+            <div class="text-block">
+                Hola, soy Christian de Venezuela. Me considero una persona curiosa y siempre dispuesta a aprender cosas nuevas.
+            </div>
+            
+            <div class="text-block">
+                Me apasiona el mundo de la edición de video, creando contenido que combine estética y dinamismo.
             </div>
 
-            <h2>PERFIL_USUARIO :: KETO</h2>
-            <p>_______________________________</p>
-            <p>> Hola, soy Christian de Venezuela.</p>
-            <p>> Me encanta editar videos y jugar con amigos.</p>
-            <p>> Si quieres hablar conmigo, búscame en Discord o Telegram.</p>
-            <p>> Soy muy amigable y me encanta leer escribir programar y pasar tiempo  con amigos bueno adios :P.</p>
-            <p>_______________________________</p>
-            <p style="color: gray; font-size: 0.7rem;">SISTEMA OPERATIVO v.1.0 // ONLINE</p>
+            <div class="text-block">
+                Mi tiempo libre lo dedico a los videojuegos, la programación y a pasar momentos de calidad con mis amigos.
+            </div>
+
+            <div class="text-block">
+                Si te interesa charlar o colaborar en algún proyecto, no dudes en buscarme en mis redes (especialmente Discord o Telegram).
+            </div>
+            
+            <div class="separator"></div>
+            <div style="text-align: center; color: gray; font-size: 0.7rem; letter-spacing: 2px;">ONLINE // v1.2</div>
         </div>
 
     </div>
+
+    <p class="telegram-user">@Ketoand</p>
 
 </body>
 </html>
